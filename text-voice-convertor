@@ -1,0 +1,165 @@
+//html.java
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Set character encoding -->
+  <meta charset="UTF-8">
+
+  <!-- Page title -->
+  <title>Text to Voice Converter</title>
+
+  <!-- Link to external CSS stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Link to Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Main container for content -->
+  <div class="container">
+
+    <!-- Cute face emoji as a friendly touch -->
+    <p>(•‿•)</p>
+
+    <!-- Main heading -->
+    <h1>Text to Voice Converter</h1>
+
+    <!-- Textarea for user input -->
+    <textarea id="text" placeholder="Type your text here..."></textarea><br>
+
+    <!-- Button to trigger speech function -->
+    <button onclick="speak()">Speak</button>
+  </div>
+
+  <!-- Link to external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+//script.js
+function speak() {
+  // Get the text entered in the textarea with id 'text'
+  const text = document.getElementById('text').value;
+  
+  // Create a new SpeechSynthesisUtterance object with the text
+  const speech = new SpeechSynthesisUtterance(text);
+  
+  // Set the speech rate (speed) to normal
+  speech.rate = 1;
+  
+  // Set the pitch of the voice to normal
+  speech.pitch = 1;
+  
+  // Set the volume to full
+  speech.volume = 1;
+  
+  // Use the speechSynthesis API to speak the text aloud
+  window.speechSynthesis.speak(speech);
+}
+
+//style.css
+/* Fade-in animation for the entire body */
+body {
+  font-family: Arial, sans-serif;          /* Set default font */
+  text-align: center;                      /* Center-align all text */
+  padding: 98px;                           /* Padding around content */
+  background-color: #b7cedd;               /* Light blue background color */
+  background-size: cover;                  /* Make background cover whole area */
+  background-position: center;             /* Center background image */
+  background-repeat: no-repeat;            /* Prevent background from repeating */
+  animation: fadeIn 1s ease-in;            /* Apply fade-in animation */
+}
+
+/* Animation for container div */
+.container {
+  animation: slideUp 1s ease-out;          /* Slide up animation */
+}
+
+/* Style for textarea input */
+textarea {
+  width: 65%;                             /* Width of textarea */
+  height: 150px;                         /* Height of textarea */
+  padding: 10px;                         /* Padding inside textarea */
+  font-size: 16px;                       /* Text size */
+  margin-bottom: 20px;                   /* Space below textarea */
+  border: 2px solid #ccc;                /* Light grey border */
+  border-radius: 5px;                    /* Rounded corners */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth shadow effect on focus */
+}
+
+/* Style for paragraph containing emoji */
+p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /* Font for emoji */
+  font-size: 20px;                      /* Font size */
+  color: black;                        /* Text color */
+  animation: slideGlow 1.5s ease-out;  /* Glow slide animation */
+  text-align: center;                   /* Center alignment */
+  margin-bottom: 20px;                  /* Space below paragraph */
+}
+
+/* Keyframe animation for sliding glow effect */
+@keyframes slideGlow {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);     /* Start slightly above */
+    text-shadow: none;                /* No shadow initially */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);         /* Move to normal position */
+  }
+}
+
+/* Style for main heading */
+h1 {
+  font-family: 'Poppins', sans-serif;   /* Custom Google font */
+  font-size: 36px;                     /* Large font size */
+  color: black;                        /* Text color */
+  animation: slideGlow 1.5s ease-out;  /* Same glow slide animation */
+  text-align: center;                   /* Center alignment */
+  margin-bottom: 20px;                  /* Space below heading */
+}
+
+/* Style for textarea focus state */
+textarea:focus {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6); /* Blue glowing shadow */
+  outline: none;                              /* Remove default outline */
+}
+
+/* Button base styling */
+button {
+  padding: 10px 20px;                      /* Padding inside button */
+  font-size: 18px;                         /* Font size */
+  cursor: pointer;                         /* Cursor changes to pointer on hover */
+  background-color: #007bff;               /* Blue background */
+  color: white;                           /* White text */
+  border: none;                           /* Remove default border */
+  border-radius: 5px;                     /* Rounded corners */
+  transition: transform 0.2s, background-color 0.3s; /* Smooth hover effects */
+}
+
+/* Button hover effects */
+button:hover {
+  background-color: #0056b3;               /* Darker blue on hover */
+  transform: scale(1.05);                 /* Slightly enlarge button */
+}
+
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }                     /* Start fully transparent */
+  to { opacity: 1; }                       /* End fully visible */
+}
+
+/* Keyframe for sliding up animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);           /* Start 30px below */
+    opacity: 0;                            /* Start invisible */
+  }
+  to {
+    transform: translateY(0);              /* Move to original position */
+    opacity: 1;                           /* Fade in */
+  }
+}
